@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\Book;
 use Illuminate\Http\Request;
 
@@ -21,7 +22,7 @@ class BookController extends Controller
      */
     public function create()
     {
-        //
+        return view('books.create');
     }
 
     /**
@@ -29,15 +30,28 @@ class BookController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $data = $request->all();
+
+        $newBook = new Book();
+
+        $newBook->title = $data['title'];
+        $newBook->author = $data['author'];
+        $newBook->category = $data['category'];
+        $newBook->content = $data['content'];
+
+        $newBook->save();
+
+        return redirect()->route("books.show", $newBook->id);
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Book $book)
     {
-        //
+        //prendiamo il libro specifico dal database
+        return view("books.show", compact("book"));
     }
 
     /**

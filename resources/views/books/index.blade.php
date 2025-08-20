@@ -15,6 +15,7 @@
             <td>{{$book->title}}</td>
             <td>{{$book->author}}</td>
             <td>{{$book->category}}</td>
+            <td><a href="{{route("books.show",$book->id)}}">Visualizza</a></td>
         </tr>
             @endforeach
     </tbody>
