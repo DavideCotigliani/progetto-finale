@@ -9,7 +9,8 @@
 
 </div>
 <h2>- {{$book->author}}</h2>
-<small>{{$book->category}}</small>
+<small>{{$book->category}}</small> <br>
+<small> <strong>Casa editrice:</strong> {{ optional($book->publisher)->name }}</small>
 <section>
     <p>
         {{$book->content}}

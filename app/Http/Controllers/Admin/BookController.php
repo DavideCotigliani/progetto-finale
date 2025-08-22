@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Book;
+use App\Models\Publisher;
 use Illuminate\Http\Request;
 
 class BookController extends Controller
@@ -22,7 +23,10 @@ class BookController extends Controller
      */
     public function create()
     {
-        return view('books.create');
+        //prendo le case editrici
+        $case = Publisher::all();
+
+        return view('books.create', compact("case"));
     }
 
     /**
@@ -38,6 +42,7 @@ class BookController extends Controller
         $newBook->title = $data['title'];
         $newBook->author = $data['author'];
         $newBook->category = $data['category'];
+        $newBook->publisher_id = $data['publisher_id'];
         $newBook->content = $data['content'];
 
         $newBook->save();
@@ -59,7 +64,11 @@ class BookController extends Controller
      */
     public function edit(Book $book)
     {
-        return view("books.edit", compact("book"));
+
+        //prendo le case editrici
+        $case = Publisher::all();
+
+        return view("books.edit", compact("book", "case"));
     }
 
     /**
@@ -73,6 +82,7 @@ class BookController extends Controller
         $book->title = $data['title'];
         $book->author = $data['author'];
         $book->category = $data['category'];
+        $book->publisher_id = $data['publisher_id'];
         $book->content = $data['content'];
 
         $book->update();

@@ -18,8 +18,17 @@
 <div class="form-control mb-3 d-flex flex-column">
     <label for="category">Categoria</label>
     <input type="text" name="category" id="category">
-
 </div>
+
+<div class="form-control mb-3 d-flex flex-column">
+    <label for="publisher_id">Casa editrice</label>
+    <select name="publisher_id" id="publisher_id">
+        @foreach ($case as $casa)
+            <option value="{{$casa->id}}">{{$casa->name}}</option>
+        @endforeach
+    </select>
+</div>
+
 
 <div class="form-control mb-3 d-flex flex-column">
 <label for="content">Contenuto</label>
