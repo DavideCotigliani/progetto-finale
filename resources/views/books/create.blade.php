@@ -2,7 +2,7 @@
 @section('title', 'Aggiungi un post')
     
 @section('content')
-<form action="{{route("books.store")}}" method="POST">
+<form action="{{route("books.store")}}" method="POST" enctype="multipart/form-data">
     @csrf 
     
     <div class="form-control mb-3 d-flex flex-column">
@@ -27,6 +27,11 @@
             <option value="{{$casa->id}}">{{$casa->name}}</option>
         @endforeach
     </select>
+</div>
+
+<div class="form-control mb-3 d-flex flex-column">
+    <label for="image">Immagine</label>
+    <input type="file" name="image" id="image">
 </div>
 
 

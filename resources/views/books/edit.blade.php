@@ -2,7 +2,7 @@
 @section('title', 'Modifica il post')
     
 @section('content')
-<form action="{{route("books.update", $book)}}" method="POST">
+<form action="{{route("books.update", $book)}}" method="POST" enctype="multipart/form-data">
     @csrf 
     @method("PUT")
     
@@ -29,6 +29,17 @@
             <option value="{{$casa->id}}" {{$book->publisher_id==$casa->id ? "selected" : ""}}>{{$casa->name}}</option>
         @endforeach
     </select>
+</div>
+
+<div class="form-control mb-3 d-flex flex-column">
+    <label for="image">Immagine</label>
+    <input type="file" name="image" id="image">
+
+    @if ($book->image)
+<div id="book-image">
+  <img class="img-fluid w-25" src="{{asset("storage/" . $book->image)}}" alt="">
+</div> 
+@endif
 </div>
 
 <div class="form-control mb-3 d-flex flex-column">

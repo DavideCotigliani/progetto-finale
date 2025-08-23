@@ -1,6 +1,13 @@
 @extends('layouts.books')
 @section('title', $book->title)
 @section('content')
+
+@if ($book->image)
+<div id="book-image">
+  <img class="img-fluid" src="{{asset("storage/" . $book->image)}}" alt="">
+</div> 
+@endif
+
 <div class="d-flex py-4 gap-2" >
     <a class="btn btn-warning" href="{{route ("books.edit", $book)}}">Modifica</a>
     <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">

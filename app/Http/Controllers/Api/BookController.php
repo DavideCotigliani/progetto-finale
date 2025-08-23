@@ -13,6 +13,11 @@ class BookController extends Controller
         //prendo i libri dal db
         $books = Book::all();
 
+        // aggiungi image_url per ogni libro
+        $books->each(function ($book) {
+            $book->image_url = $book->image ? asset('storage/' . $book->image) : null;
+        });
+
         return response()->json(
             ["success" => true,
             "data" => $books
@@ -23,6 +28,11 @@ class BookController extends Controller
     public function show(Book $book)
     {
         $book->load('publisher');
+
+
+        // aggiungi un campo image_url per React
+        $book->image_url = $book->image ? asset('storage/' . $book->image) : null;
+
 
         return response()->json(
             ["success" => true,
