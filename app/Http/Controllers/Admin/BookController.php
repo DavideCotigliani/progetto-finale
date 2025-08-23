@@ -120,6 +120,12 @@ class BookController extends Controller
      */
     public function destroy(Book $book)
     {
+
+        //se il post ha immagine collegata, la elimino
+        if ($book->image) {
+            Storage::delete($book->image);
+        }
+
         $book->delete();
 
         return redirect()->route("books.index");
