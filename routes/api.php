@@ -8,4 +8,8 @@ use Illuminate\Support\Facades\Route;
 //     return $request->user();
 // })->middleware('auth:sanctum');
 
+//index
 Route::get("books", [BookController::class, "index"]);
+
+//show
+Route::get("books/{book}", [BookController::class, "show"]);

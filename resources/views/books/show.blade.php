@@ -6,6 +6,7 @@
     <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
  Elimina
 </button>
+    <a class="btn btn-primary" href="{{route ("books.index")}}">Torna alla lista</a>
 
 </div>
 <h2>- {{$book->author}}</h2>
